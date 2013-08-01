@@ -1,4 +1,4 @@
-###Laravel 4 Package to integrate multiple Email Providers
+###Laravel 4 Package to integrate multiple Email Providers - WIP
 
 Email Providers
 
