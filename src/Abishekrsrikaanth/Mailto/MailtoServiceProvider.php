@@ -2,7 +2,8 @@
 
 use Illuminate\Support\ServiceProvider;
 
-class MailtoServiceProvider extends ServiceProvider {
+class MailtoServiceProvider extends ServiceProvider
+{
 
 	/**
 	 * Indicates if loading of the provider is deferred.
@@ -28,7 +29,9 @@ class MailtoServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		$this->app['mailto'] = $this->app->share(function ($app) {
+			return new Mailto();
+		});
 	}
 
 	/**
@@ -38,7 +41,7 @@ class MailtoServiceProvider extends ServiceProvider {
 	 */
 	public function provides()
 	{
-		return array();
+		return array('mailto');
 	}
 
 }
