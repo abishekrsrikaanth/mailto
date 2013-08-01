@@ -1,6 +1,9 @@
 {
     "name": "abishekrsrikaanth/mailto",
     "description": "Laravel 4 Package to integrate with multiple Cloud Email Providers",
+    "license": "BSD-3-Clause",
+    "keywords": ["email","laravel","laravel-4","mandrill"],
+    "homepage": "https://github.com/abishekrsrikaanth/mailto/",
     "authors": [
         {
             "name": "Abishek R Srikaanth",
