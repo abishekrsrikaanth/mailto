@@ -1,6 +1,6 @@
 {
     "name": "abishekrsrikaanth/mailto",
-    "description": "",
+    "description": "Laravel 4 Package to integrate with multiple Cloud Email Providers",
     "authors": [
         {
             "name": "Abishek R Srikaanth",
