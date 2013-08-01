@@ -9,12 +9,10 @@
     ],
     "require": {
         "php": ">=5.3.0",
-        "illuminate/support": "4.0.x"
+        "illuminate/support": "4.0.x",
+        "guzzle/guzzle": "3.7.*@dev"
     },
     "autoload": {
-        "classmap": [
-            "src/migrations"
-        ],
         "psr-0": {
             "Abishekrsrikaanth\\Mailto": "src/"
         }
