@@ -1,8 +1,8 @@
-###Laravel 4 Package to integrate multiple Email Providers
+###Laravel 4 Package to integrate with multiple Cloud Email Providers
 
 Email Providers
 
-- Mandrill
+- [Mandrill](https://mandrillapp.com)
 
 ####Sending Email using Mandrill
 ```
@@ -15,11 +15,11 @@ $mandrill->AddRecipient($email, $name)
          ->send();
 ```
 
-Implementation in progress
+#####Work in progress
 
 - PostmarkApp
 
-Implementation for future
+#####Implementation for future
 
 - MailGun
 - ElasticMail
