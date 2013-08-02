@@ -5,6 +5,36 @@
 - [Mandrill](https://www.mandrillapp.com) - ([Documentation](#mandrill))
 - [PostmarkApp](http://www.postmarkapp.com)
 
+###Installation
+Add abishekrsrikaanth/mailto as a requirement to composer.json:
+```
+{
+    ...
+    "require": {
+        ...
+        "abishekrsrikaanth/mailto": "dev-master"
+        ...
+    },
+}
+```
+Update composer:
+```
+$ php composer.phar update
+```
+Add the provider to your app/config/app.php:
+```
+'providers' => array(
+    ...
+    'Abishekrsrikaanth\Mailto\MailtoServiceProvider',
+),
+```
+and the Facade info on app/config/app.php
+```
+'aliases'   => array(
+	...
+	'MailTo'      => 'Abishekrsrikaanth\Mailto\Facades\Mailto',
+),
+```
 ###Mandrill
 <a name="mandrill">
 #####Sending Email using Mandrill
