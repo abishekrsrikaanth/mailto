@@ -35,6 +35,11 @@ and the Facade info on app/config/app.php
 	'MailTo'      => 'Abishekrsrikaanth\Mailto\Facades\Mailto',
 ),
 ```
+Publish Configuration
+```
+php artisan config:publish abishekrsrikaanth/mailto
+```
+
 ###Mandrill
 <a name="mandrill"></a>
 #####Sending Email using Mandrill
