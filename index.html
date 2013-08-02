@@ -46,11 +46,25 @@
 <a name="email-providers-supported" class="anchor" href="#email-providers-supported"><span class="octicon octicon-link"></span></a>Email Providers Supported</h4>
 
 <ul>
+<li><a href="#install">Installation</a></li>
 <li>
-<a href="https://www.mandrillapp.com">Mandrill</a> - (<a href="#mandrill">Documentation</a>)</li>
-<li><a href="http://www.postmarkapp.com">PostmarkApp</a></li>
+<a href="https://www.mandrillapp.com">Mandrill</a> - (<a href="#mandrill">Documentation</a>)
+
+<ul>
+<li><a href="#send-mandrill">Sending Email using Mandrill</a></li>
+<li><a href="#queue-mandrill">Queuing Email using Mandrill</a></li>
+<li><a href="#send-mandrill-time">Sending Email at a given Time</a></li>
+<li><a href="#send-mandrill-batch">Sending Email to a Batch of recipients</a></li>
+<li><a href="#send-mandrill-batch-time">Sending Email to a Batch of recipients at a given time</a></li>
+<li><a href="#credentials-mandrill">Passing the credentials dynamically for Mandrill</a></li>
+<li><a href="#methods-mandrill">Methods</a></li>
+</ul>
+</li>
+<li>
+<a href="http://www.postmarkapp.com">PostmarkApp</a> - In Progress</li>
 </ul><h3>
-<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h3>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation<a name="install"></a>
+</h3>
 
 <p>Add abishekrsrikaanth/mailto as a requirement to composer.json:</p>
 
@@ -85,13 +99,19 @@
 ),
 </code></pre>
 
+<p>Publish Configuration</p>
+
+<pre><code>php artisan config:publish abishekrsrikaanth/mailto
+</code></pre>
+
 <h3>
 <a name="mandrill" class="anchor" href="#mandrill"><span class="octicon octicon-link"></span></a>Mandrill</h3>
 
 <p><a name="mandrill"></a></p>
 
 <h5>
-<a name="sending-email-using-mandrill" class="anchor" href="#sending-email-using-mandrill"><span class="octicon octicon-link"></span></a>Sending Email using Mandrill</h5>
+<a name="sending-email-using-mandrill-" class="anchor" href="#sending-email-using-mandrill-"><span class="octicon octicon-link"></span></a>Sending Email using Mandrill <a name="send-mandrill"></a>
+</h5>
 
 <pre><code>$mandrill = MailTo::Mandrill();
 $mandrill-&gt;addRecipient($email, $name)
@@ -103,7 +123,8 @@ $mandrill-&gt;addRecipient($email, $name)
 </code></pre>
 
 <h5>
-<a name="queuing-email-using-mandrill" class="anchor" href="#queuing-email-using-mandrill"><span class="octicon octicon-link"></span></a>Queuing Email using Mandrill</h5>
+<a name="queuing-email-using-mandrill" class="anchor" href="#queuing-email-using-mandrill"><span class="octicon octicon-link"></span></a>Queuing Email using Mandrill<a name="queue-mandrill"></a>
+</h5>
 
 <pre><code>$mandrill = MailTo::Mandrill();
 $mandrill-&gt;addRecipient($email, $name)
@@ -115,7 +136,8 @@ $mandrill-&gt;addRecipient($email, $name)
 </code></pre>
 
 <h4>
-<a name="sending-email-at-a-given-time" class="anchor" href="#sending-email-at-a-given-time"><span class="octicon octicon-link"></span></a>Sending Email at a given Time</h4>
+<a name="sending-email-at-a-given-time" class="anchor" href="#sending-email-at-a-given-time"><span class="octicon octicon-link"></span></a>Sending Email at a given Time<a name="send-mandrill-time"></a>
+</h4>
 
 <pre><code>$timestamp = new DateTime('+1 hour');
 
@@ -129,7 +151,8 @@ $mandrill-&gt;addRecipient($email, $name)
 </code></pre>
 
 <h4>
-<a name="sending-email-to-a-batch-of-recipients" class="anchor" href="#sending-email-to-a-batch-of-recipients"><span class="octicon octicon-link"></span></a>Sending Email to a Batch of recipients</h4>
+<a name="sending-email-to-a-batch-of-recipients" class="anchor" href="#sending-email-to-a-batch-of-recipients"><span class="octicon octicon-link"></span></a>Sending Email to a Batch of recipients<a name="send-mandrill-batch"></a>
+</h4>
 
 <pre><code>$mandrill = MailTo::Mandrill();
 $mandrill-&gt;addRecipient($email, $name)
@@ -141,7 +164,8 @@ $mandrill-&gt;addRecipient($email, $name)
 </code></pre>
 
 <h4>
-<a name="sending-email-to-a-batch-of-recipients-at-a-given-time" class="anchor" href="#sending-email-to-a-batch-of-recipients-at-a-given-time"><span class="octicon octicon-link"></span></a>Sending Email to a Batch of recipients at a given time</h4>
+<a name="sending-email-to-a-batch-of-recipients-at-a-given-time" class="anchor" href="#sending-email-to-a-batch-of-recipients-at-a-given-time"><span class="octicon octicon-link"></span></a>Sending Email to a Batch of recipients at a given time<a name="send-mandrill-batch-time"></a>
+</h4>
 
 <pre><code>$timestamp = new DateTime('+1 hour');
 
@@ -155,7 +179,8 @@ $mandrill-&gt;addRecipient($email, $name)
 </code></pre>
 
 <h4>
-<a name="passing-the-credentials-dynamically-for-mandrill" class="anchor" href="#passing-the-credentials-dynamically-for-mandrill"><span class="octicon octicon-link"></span></a>Passing the credentials dynamically for Mandrill</h4>
+<a name="passing-the-credentials-dynamically-for-mandrill" class="anchor" href="#passing-the-credentials-dynamically-for-mandrill"><span class="octicon octicon-link"></span></a>Passing the credentials dynamically for Mandrill<a name="credentials-mandrill"></a>
+</h4>
 
 <pre><code>$mandrill = MailTo::Mandrill(array('apikey'=&gt;'MADRILL_API_KEY'));
 $mandrill-&gt;addRecipient($email, $name)
@@ -167,7 +192,8 @@ $mandrill-&gt;addRecipient($email, $name)
 </code></pre>
 
 <h4>
-<a name="methods" class="anchor" href="#methods"><span class="octicon octicon-link"></span></a>Methods</h4>
+<a name="methods" class="anchor" href="#methods"><span class="octicon octicon-link"></span></a>Methods<a name="methods-mandrill"></a>
+</h4>
 
 <table>
 <tr>
@@ -305,6 +331,9 @@ $mandrill-&gt;addRecipient($email, $name)
 <ul>
 <li>MailGun</li>
 <li>ElasticMail</li>
+<li>PostageApp</li>
+<li>Mad Mimi</li>
+<li>Alpha Mail</li>
 </ul>
       </section>
       <footer>
