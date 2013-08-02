@@ -1,6 +1,9 @@
 <?php
 return array(
 	'mandrill' => array(
-		'apikey' => 'somekeyhere'
+		'apikey' => 'MANDRILL_API_TOKEN'
+	),
+	'postmark' => array(
+		'apikey' => 'POSTMARK_API_TEST'
 	)
 );

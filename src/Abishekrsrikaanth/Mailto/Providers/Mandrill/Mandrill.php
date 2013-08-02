@@ -1,10 +1,9 @@
 <?php namespace Abishekrsrikaanth\Mailto\Providers\Mandrill;
 
-use Abishekrsrikaanth\Mailto\Providers\ProviderInterface;
 use Illuminate\Support\Facades\Config;
 use Guzzle\Service\Client;
 
-class Mandrill implements ProviderInterface
+class Mandrill
 {
 	private $_api_url = "https://mandrillapp.com/api/1.0/";
 
@@ -35,8 +34,6 @@ class Mandrill implements ProviderInterface
 			else
 				$this->_send_object['key'] = $api_key;
 		}
-
-		return $this;
 	}
 
 	/**
@@ -443,7 +440,7 @@ class Mandrill implements ProviderInterface
 	}
 
 	/**
-	 * Performs the API to Mandrill using GuzzlePHP
+	 * Performs the API Call to Mandrill using GuzzlePHP
 	 *
 	 * @return string
 	 */
