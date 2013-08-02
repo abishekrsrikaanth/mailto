@@ -50,6 +50,42 @@
 <a href="https://www.mandrillapp.com">Mandrill</a> - (<a href="#mandrill">Documentation</a>)</li>
 <li><a href="http://www.postmarkapp.com">PostmarkApp</a></li>
 </ul><h3>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h3>
+
+<p>Add abishekrsrikaanth/mailto as a requirement to composer.json:</p>
+
+<pre><code>{
+    ...
+    "require": {
+        ...
+        "abishekrsrikaanth/mailto": "dev-master"
+        ...
+    },
+}
+</code></pre>
+
+<p>Update composer:</p>
+
+<pre><code>$ php composer.phar update
+</code></pre>
+
+<p>Add the provider to your app/config/app.php:</p>
+
+<pre><code>'providers' =&gt; array(
+    ...
+    'Abishekrsrikaanth\Mailto\MailtoServiceProvider',
+),
+</code></pre>
+
+<p>and the Facade info on app/config/app.php</p>
+
+<pre><code>'aliases'   =&gt; array(
+    ...
+    'MailTo'      =&gt; 'Abishekrsrikaanth\Mailto\Facades\Mailto',
+),
+</code></pre>
+
+<h3>
 <a name="mandrill" class="anchor" href="#mandrill"><span class="octicon octicon-link"></span></a>Mandrill</h3>
 
 <p><a name="mandrill"></a></p>
@@ -58,7 +94,7 @@
 <a name="sending-email-using-mandrill" class="anchor" href="#sending-email-using-mandrill"><span class="octicon octicon-link"></span></a>Sending Email using Mandrill</h5>
 
 <pre><code>$mandrill = MailTo::Mandrill();
-$mandrill-&gt;AddRecipient($email, $name)
+$mandrill-&gt;addRecipient($email, $name)
          -&gt;setFrom($email, $name)
          -&gt;setHtml($html)
          -&gt;setText($text)
@@ -70,7 +106,7 @@ $mandrill-&gt;AddRecipient($email, $name)
 <a name="queuing-email-using-mandrill" class="anchor" href="#queuing-email-using-mandrill"><span class="octicon octicon-link"></span></a>Queuing Email using Mandrill</h5>
 
 <pre><code>$mandrill = MailTo::Mandrill();
-$mandrill-&gt;AddRecipient($email, $name)
+$mandrill-&gt;addRecipient($email, $name)
          -&gt;setFrom($email, $name)
          -&gt;setHtml($html)
          -&gt;setText($text)
@@ -82,7 +118,7 @@ $mandrill-&gt;AddRecipient($email, $name)
 <a name="sending-email-at-a-given-time" class="anchor" href="#sending-email-at-a-given-time"><span class="octicon octicon-link"></span></a>Sending Email at a given Time</h4>
 
 <pre><code>$mandrill = MailTo::Mandrill();
-$mandrill-&gt;AddRecipient($email, $name)
+$mandrill-&gt;addRecipient($email, $name)
          -&gt;setFrom($email, $name)
          -&gt;setHtml($html)
          -&gt;setText($text)
@@ -94,7 +130,7 @@ $mandrill-&gt;AddRecipient($email, $name)
 <a name="passing-the-credentials-dynamically-for-mandrill" class="anchor" href="#passing-the-credentials-dynamically-for-mandrill"><span class="octicon octicon-link"></span></a>Passing the credentials dynamically for Mandrill</h4>
 
 <pre><code>$mandrill = MailTo::Mandrill(array('apikey'=&gt;'MADRILL_API_KEY'));
-$mandrill-&gt;AddRecipient($email, $name)
+$mandrill-&gt;addRecipient($email, $name)
          -&gt;setFrom($email, $name)
          -&gt;setHtml($html)
          -&gt;setText($text)
