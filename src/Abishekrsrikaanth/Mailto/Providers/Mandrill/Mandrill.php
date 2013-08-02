@@ -46,7 +46,7 @@ class Mandrill implements ProviderInterface
 	 * @return $this
 	 * @throws \Exception
 	 */
-	public function AddRecipient($email, $name)
+	public function addRecipient($email, $name)
 	{
 		if (empty($email) || empty($name))
 			throw new \Exception('The Recipeint Email Address or Name is missing');

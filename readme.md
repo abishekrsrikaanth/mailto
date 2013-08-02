@@ -40,7 +40,7 @@ and the Facade info on app/config/app.php
 #####Sending Email using Mandrill
 ```
 $mandrill = MailTo::Mandrill();
-$mandrill->AddRecipient($email, $name)
+$mandrill->addRecipient($email, $name)
          ->setFrom($email, $name)
          ->setHtml($html)
          ->setText($text)
@@ -51,7 +51,7 @@ $mandrill->AddRecipient($email, $name)
 #####Queuing Email using Mandrill
 ```
 $mandrill = MailTo::Mandrill();
-$mandrill->AddRecipient($email, $name)
+$mandrill->addRecipient($email, $name)
          ->setFrom($email, $name)
          ->setHtml($html)
          ->setText($text)
@@ -62,7 +62,7 @@ $mandrill->AddRecipient($email, $name)
 ####Sending Email at a given Time
 ```
 $mandrill = MailTo::Mandrill();
-$mandrill->AddRecipient($email, $name)
+$mandrill->addRecipient($email, $name)
          ->setFrom($email, $name)
          ->setHtml($html)
          ->setText($text)
@@ -73,7 +73,7 @@ $mandrill->AddRecipient($email, $name)
 ####Passing the credentials dynamically for Mandrill
 ```
 $mandrill = MailTo::Mandrill(array('apikey'=>'MADRILL_API_KEY'));
-$mandrill->AddRecipient($email, $name)
+$mandrill->addRecipient($email, $name)
          ->setFrom($email, $name)
          ->setHtml($html)
          ->setText($text)
