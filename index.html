@@ -46,10 +46,16 @@
 <a name="email-providers-supported" class="anchor" href="#email-providers-supported"><span class="octicon octicon-link"></span></a>Email Providers Supported</h4>
 
 <ul>
-<li><a href="https://www.mandrillapp.com">Mandrill</a></li>
+<li>
+<a href="https://www.mandrillapp.com">Mandrill</a> - (<a href="#mandrill">Documentation</a>)</li>
 <li><a href="http://www.postmarkapp.com">PostmarkApp</a></li>
-</ul><h4>
-<a name="sending-email-using-mandrill" class="anchor" href="#sending-email-using-mandrill"><span class="octicon octicon-link"></span></a>Sending Email using Mandrill</h4>
+</ul><h3>
+<a name="mandrill" class="anchor" href="#mandrill"><span class="octicon octicon-link"></span></a>Mandrill</h3>
+
+<p><a name="mandrill"></a></p>
+
+<h5>
+<a name="sending-email-using-mandrill" class="anchor" href="#sending-email-using-mandrill"><span class="octicon octicon-link"></span></a>Sending Email using Mandrill</h5>
 
 <pre><code>$mandrill = MailTo::Mandrill();
 $mandrill-&gt;AddRecipient($email, $name)
@@ -60,8 +66,8 @@ $mandrill-&gt;AddRecipient($email, $name)
          -&gt;send();
 </code></pre>
 
-<h4>
-<a name="queuing-email-using-mandrill" class="anchor" href="#queuing-email-using-mandrill"><span class="octicon octicon-link"></span></a>Queuing Email using Mandrill</h4>
+<h5>
+<a name="queuing-email-using-mandrill" class="anchor" href="#queuing-email-using-mandrill"><span class="octicon octicon-link"></span></a>Queuing Email using Mandrill</h5>
 
 <pre><code>$mandrill = MailTo::Mandrill();
 $mandrill-&gt;AddRecipient($email, $name)
@@ -84,13 +90,25 @@ $mandrill-&gt;AddRecipient($email, $name)
          -&gt;sendLater();
 </code></pre>
 
+<h4>
+<a name="passing-the-credentials-dynamically-for-mandrill" class="anchor" href="#passing-the-credentials-dynamically-for-mandrill"><span class="octicon octicon-link"></span></a>Passing the credentials dynamically for Mandrill</h4>
+
+<pre><code>$mandrill = MailTo::Mandrill(array('apikey'=&gt;'MADRILL_API_KEY'));
+$mandrill-&gt;AddRecipient($email, $name)
+         -&gt;setFrom($email, $name)
+         -&gt;setHtml($html)
+         -&gt;setText($text)
+         -&gt;setSubject($subject)
+         -&gt;send();
+</code></pre>
+
 <h5>
 <a name="work-in-progress" class="anchor" href="#work-in-progress"><span class="octicon octicon-link"></span></a>Work in progress</h5>
 
 <ul>
 <li>PostmarkApp</li>
 </ul><h5>
-<a name="implementation-for-future" class="anchor" href="#implementation-for-future"><span class="octicon octicon-link"></span></a>Implementation for future</h5>
+<a name="implementations-coming-soon" class="anchor" href="#implementations-coming-soon"><span class="octicon octicon-link"></span></a>Implementations coming soon</h5>
 
 <ul>
 <li>MailGun</li>
@@ -103,6 +121,16 @@ $mandrill-&gt;AddRecipient($email, $name)
       </footer>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-42908632-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
   </body>
 </html>
