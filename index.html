@@ -60,6 +60,30 @@ $mandrill-&gt;AddRecipient($email, $name)
          -&gt;send();
 </code></pre>
 
+<h4>
+<a name="queuing-email-using-mandrill" class="anchor" href="#queuing-email-using-mandrill"><span class="octicon octicon-link"></span></a>Queuing Email using Mandrill</h4>
+
+<pre><code>$mandrill = MailTo::Mandrill();
+$mandrill-&gt;AddRecipient($email, $name)
+         -&gt;setFrom($email, $name)
+         -&gt;setHtml($html)
+         -&gt;setText($text)
+         -&gt;setSubject($subject)
+         -&gt;queue();
+</code></pre>
+
+<h4>
+<a name="sending-email-at-a-given-time" class="anchor" href="#sending-email-at-a-given-time"><span class="octicon octicon-link"></span></a>Sending Email at a given Time</h4>
+
+<pre><code>$mandrill = MailTo::Mandrill();
+$mandrill-&gt;AddRecipient($email, $name)
+         -&gt;setFrom($email, $name)
+         -&gt;setHtml($html)
+         -&gt;setText($text)
+         -&gt;setSubject($subject)
+         -&gt;sendLater();
+</code></pre>
+
 <h5>
 <a name="work-in-progress" class="anchor" href="#work-in-progress"><span class="octicon octicon-link"></span></a>Work in progress</h5>
 
