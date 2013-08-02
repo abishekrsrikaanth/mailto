@@ -1,11 +1,18 @@
 ###Laravel 4 Package to integrate with multiple Cloud Email Providers
 
 ####Email Providers Supported
-
+- [Installation](#install)
 - [Mandrill](https://www.mandrillapp.com) - ([Documentation](#mandrill))
-- [PostmarkApp](http://www.postmarkapp.com)
+  - [Sending Email using Mandrill](#send-mandrill)
+  - [Queuing Email using Mandrill](#queue-mandrill)
+  - [Sending Email at a given Time](#send-mandrill-time)
+  - [Sending Email to a Batch of recipients](#send-mandrill-batch)
+  - [Sending Email to a Batch of recipients at a given time](#send-mandrill-batch-time)
+  - [Passing the credentials dynamically for Mandrill](#credentials-mandrill)
+  - [Methods](#methods-mandrill)
+- [PostmarkApp](http://www.postmarkapp.com) - In Progress
 
-###Installation
+###Installation<a name="install"></a>
 Add abishekrsrikaanth/mailto as a requirement to composer.json:
 ```
 {
@@ -42,7 +49,7 @@ php artisan config:publish abishekrsrikaanth/mailto
 
 ###Mandrill
 <a name="mandrill"></a>
-#####Sending Email using Mandrill
+#####Sending Email using Mandrill <a name="send-mandrill"></a>
 ```
 $mandrill = MailTo::Mandrill();
 $mandrill->addRecipient($email, $name)
@@ -53,7 +60,7 @@ $mandrill->addRecipient($email, $name)
          ->send();
 ```
 
-#####Queuing Email using Mandrill
+#####Queuing Email using Mandrill<a name="queue-mandrill"></a>
 ```
 $mandrill = MailTo::Mandrill();
 $mandrill->addRecipient($email, $name)
@@ -64,7 +71,7 @@ $mandrill->addRecipient($email, $name)
          ->queue();
 ```
 
-####Sending Email at a given Time
+####Sending Email at a given Time<a name="send-mandrill-time"></a>
 ```
 $timestamp = new DateTime('+1 hour');
 
@@ -77,7 +84,7 @@ $mandrill->addRecipient($email, $name)
          ->send($timestamp);
 ```
 
-####Sending Email to a Batch of recipients
+####Sending Email to a Batch of recipients<a name="send-mandrill-batch"></a>
 ```
 $mandrill = MailTo::Mandrill();
 $mandrill->addRecipient($email, $name)
@@ -88,7 +95,7 @@ $mandrill->addRecipient($email, $name)
          ->sendBatch();
 ```
 
-####Sending Email to a Batch of recipients at a given time
+####Sending Email to a Batch of recipients at a given time<a name="send-mandrill-batch-time"></a>
 ```
 $timestamp = new DateTime('+1 hour');
 
@@ -101,7 +108,7 @@ $mandrill->addRecipient($email, $name)
          ->sendBatch($timestamp);
 ```
 
-####Passing the credentials dynamically for Mandrill
+####Passing the credentials dynamically for Mandrill<a name="credentials-mandrill"></a>
 ```
 $mandrill = MailTo::Mandrill(array('apikey'=>'MADRILL_API_KEY'));
 $mandrill->addRecipient($email, $name)
@@ -111,7 +118,7 @@ $mandrill->addRecipient($email, $name)
          ->setSubject($subject)
          ->send();
 ```
-####Methods
+####Methods<a name="nethods-mandrill"></a>
 <table>
   <tr>
     <th>Method</th><th>Explanation</th>
@@ -245,3 +252,6 @@ $mandrill->addRecipient($email, $name)
 
 - MailGun
 - ElasticMail
+- PostageApp
+- Mad Mimi
+- Alpha Mail
