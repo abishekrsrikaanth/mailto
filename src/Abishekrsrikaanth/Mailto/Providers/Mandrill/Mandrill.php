@@ -27,14 +27,15 @@ class Mandrill implements ProviderInterface
 	{
 		if (count($credentials) > 0) {
 			$api_key                  = $credentials['apikey'];
-			$this->send_object['key'] = $api_key;
+			$this->_send_object['key'] = $api_key;
 		} else {
 			$api_key = Config::get("mailto::providers.mandrill.apikey");
 			if (empty($api_key))
 				throw new \Exception('The Mandrill API Key is missing');
 			else
-				$this->send_object['key'] = $api_key;
+				$this->_send_object['key'] = $api_key;
 		}
+		return $this;
 	}
 
 	/**
@@ -457,7 +458,6 @@ class Mandrill implements ProviderInterface
 		$this->_send_object['message']              = $this->_message_object;
 		$client->setUserAgent('PayToLibrary/0.1');
 		$request = $client->post($this->_api_send_url, null, json_encode($this->_send_object));
-
 		return $request->send()->json();
 	}
 }
