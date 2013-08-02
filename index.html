@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Mailto by abishekrsrikaanth</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Mailto</h1>
+        <p>Laravel 4 Package that helps integrate with multiple Email Providers</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/abishekrsrikaanth/mailto" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/abishekrsrikaanth/mailto/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/abishekrsrikaanth/mailto/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h3>
+<a name="laravel-4-package-to-integrate-with-multiple-cloud-email-providers" class="anchor" href="#laravel-4-package-to-integrate-with-multiple-cloud-email-providers"><span class="octicon octicon-link"></span></a>Laravel 4 Package to integrate with multiple Cloud Email Providers</h3>
+
+<h4>
+<a name="email-providers-supported" class="anchor" href="#email-providers-supported"><span class="octicon octicon-link"></span></a>Email Providers Supported</h4>
+
+<ul>
+<li><a href="https://www.mandrillapp.com">Mandrill</a></li>
+<li><a href="http://www.postmarkapp.com">PostmarkApp</a></li>
+</ul><h4>
+<a name="sending-email-using-mandrill" class="anchor" href="#sending-email-using-mandrill"><span class="octicon octicon-link"></span></a>Sending Email using Mandrill</h4>
+
+<pre><code>$mandrill = MailTo::Mandrill();
+$mandrill-&gt;AddRecipient($email, $name)
+         -&gt;setFrom($email, $name)
+         -&gt;setHtml($html)
+         -&gt;setText($text)
+         -&gt;setSubject($subject)
+         -&gt;send();
+</code></pre>
+
+<h5>
+<a name="work-in-progress" class="anchor" href="#work-in-progress"><span class="octicon octicon-link"></span></a>Work in progress</h5>
+
+<ul>
+<li>PostmarkApp</li>
+</ul><h5>
+<a name="implementation-for-future" class="anchor" href="#implementation-for-future"><span class="octicon octicon-link"></span></a>Implementation for future</h5>
+
+<ul>
+<li>MailGun</li>
+<li>ElasticMail</li>
+</ul>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/abishekrsrikaanth">abishekrsrikaanth</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
