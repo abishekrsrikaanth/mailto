@@ -117,13 +117,41 @@ $mandrill-&gt;addRecipient($email, $name)
 <h4>
 <a name="sending-email-at-a-given-time" class="anchor" href="#sending-email-at-a-given-time"><span class="octicon octicon-link"></span></a>Sending Email at a given Time</h4>
 
+<pre><code>$timestamp = new DateTime('+1 hour');
+
+$mandrill = MailTo::Mandrill();
+$mandrill-&gt;addRecipient($email, $name)
+         -&gt;setFrom($email, $name)
+         -&gt;setHtml($html)
+         -&gt;setText($text)
+         -&gt;setSubject($subject)
+         -&gt;send($timestamp);
+</code></pre>
+
+<h4>
+<a name="sending-email-to-a-batch-of-recipients" class="anchor" href="#sending-email-to-a-batch-of-recipients"><span class="octicon octicon-link"></span></a>Sending Email to a Batch of recipients</h4>
+
 <pre><code>$mandrill = MailTo::Mandrill();
 $mandrill-&gt;addRecipient($email, $name)
          -&gt;setFrom($email, $name)
          -&gt;setHtml($html)
          -&gt;setText($text)
          -&gt;setSubject($subject)
-         -&gt;sendLater();
+         -&gt;sendBatch();
+</code></pre>
+
+<h4>
+<a name="sending-email-to-a-batch-of-recipients-at-a-given-time" class="anchor" href="#sending-email-to-a-batch-of-recipients-at-a-given-time"><span class="octicon octicon-link"></span></a>Sending Email to a Batch of recipients at a given time</h4>
+
+<pre><code>$timestamp = new DateTime('+1 hour');
+
+$mandrill = MailTo::Mandrill();
+$mandrill-&gt;addRecipient($email, $name)
+         -&gt;setFrom($email, $name)
+         -&gt;setHtml($html)
+         -&gt;setText($text)
+         -&gt;setSubject($subject)
+         -&gt;sendBatch($timestamp);
 </code></pre>
 
 <h4>
