@@ -118,7 +118,7 @@ $mandrill->addRecipient($email, $name)
          ->setSubject($subject)
          ->send();
 ```
-####Methods<a name="nethods-mandrill"></a>
+####Methods<a name="methods-mandrill"></a>
 <table>
   <tr>
     <th>Method</th><th>Explanation</th>
