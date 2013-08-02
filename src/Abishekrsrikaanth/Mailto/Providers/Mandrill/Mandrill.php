@@ -59,7 +59,7 @@ class Mandrill implements ProviderInterface
 	}
 
 	/**
-	 * Set the HTML Content for the Email
+	 * Sets the HTML Content for the Email
 	 *
 	 * @param $html
 	 *
@@ -73,7 +73,7 @@ class Mandrill implements ProviderInterface
 	}
 
 	/**
-	 * Set the Text Content for the Email
+	 * Sets the Text Content for the Email
 	 *
 	 * @param $text
 	 *
@@ -87,7 +87,7 @@ class Mandrill implements ProviderInterface
 	}
 
 	/**
-	 * Set the Subject of the Email
+	 * Sets the Subject of the Email
 	 *
 	 * @param $subject
 	 *
@@ -101,7 +101,7 @@ class Mandrill implements ProviderInterface
 	}
 
 	/**
-	 * Set the Senders details
+	 * Set the Information of the Sender
 	 *
 	 * @param $email
 	 * @param $name
@@ -186,7 +186,7 @@ class Mandrill implements ProviderInterface
 	}
 
 	/**
-	 *Set the Reply To Email Address
+	 *Sets the Reply To Email Address
 	 *
 	 * @param $email
 	 *
@@ -208,7 +208,7 @@ class Mandrill implements ProviderInterface
 	 *
 	 * @return $this
 	 */
-	public function AddAttachment($fileName, $mime, $content)
+	public function addAttachment($fileName, $mime, $content)
 	{
 		$this->_attachments[] = array('name' => $fileName, 'type' => $mime, 'content' => $content);
 
@@ -224,7 +224,7 @@ class Mandrill implements ProviderInterface
 	 *
 	 * @return $this
 	 */
-	public function AddImage($fileName, $mime, $content)
+	public function addImage($fileName, $mime, $content)
 	{
 		$this->_images[] = array('name' => $fileName, 'type' => $mime, 'content' => $content);
 
@@ -260,7 +260,7 @@ class Mandrill implements ProviderInterface
 	}
 
 	/**
-	 * Set whether or not to turn on click tracking for the message
+	 * Sets whether or not to turn on click tracking for the message
 	 *
 	 * @param bool $value
 	 *
@@ -308,7 +308,7 @@ class Mandrill implements ProviderInterface
 	 *
 	 * @return $this
 	 */
-	public function shouldStringUrlQS($value = false)
+	public function shouldStripUrlQS($value = false)
 	{
 		$this->_message_object['url_strip_qs'] = $value == true ? true : false;
 
