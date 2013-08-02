@@ -116,6 +116,28 @@ $mandrill->addRecipient($email, $name)
          ->setSubject($subject)
          ->send();
 ```
+
+####Example Response from Mandrill - Success
+```
+[
+    {
+        "email": "recipient.email@example.com",
+        "status": "sent",
+        "reject_reason": "hard-bounce",
+        "_id": "abc123abc123abc123abc123abc123"
+    }
+]
+```
+
+####Example Response from Mandrill - Error
+```
+{
+    "status": "error",
+    "code": 10,
+    "name": "PaymentRequired",
+    "message": "This feature is only available for accounts with a positive balance."
+}
+```
 ####Methods<a name="methods-mandrill"></a>
 <table>
   <tr>
