@@ -1,5 +1,3 @@
-###Laravel 4 Package to integrate with multiple Cloud Email Providers
-
 ####Email Providers Supported
 - [Installation](#install)
 - [Mandrill](https://www.mandrillapp.com) - ([Documentation](#mandrill))
