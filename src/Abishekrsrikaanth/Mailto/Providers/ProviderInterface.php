@@ -4,6 +4,6 @@ namespace Abishekrsrikaanth\Mailto\Providers;
 
 interface ProviderInterface
 {
-	public function send();
-	public function batchSend();
+	public function send($timestamp = null);
+	public function sendBatch($timestamp = null);
 }

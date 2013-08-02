@@ -36,7 +36,7 @@ and the Facade info on app/config/app.php
 ),
 ```
 ###Mandrill
-<a name="mandrill">
+<a name="mandrill"></a>
 #####Sending Email using Mandrill
 ```
 $mandrill = MailTo::Mandrill();
@@ -61,13 +61,39 @@ $mandrill->addRecipient($email, $name)
 
 ####Sending Email at a given Time
 ```
+$timestamp = new DateTime('+1 hour');
+
 $mandrill = MailTo::Mandrill();
 $mandrill->addRecipient($email, $name)
          ->setFrom($email, $name)
          ->setHtml($html)
          ->setText($text)
          ->setSubject($subject)
-         ->sendLater();
+         ->send($timestamp);
+```
+
+####Sending Email to a Batch of recipients
+```
+$mandrill = MailTo::Mandrill();
+$mandrill->addRecipient($email, $name)
+         ->setFrom($email, $name)
+         ->setHtml($html)
+         ->setText($text)
+         ->setSubject($subject)
+         ->sendBatch();
+```
+
+####Sending Email to a Batch of recipients at a given time
+```
+$timestamp = new DateTime('+1 hour');
+
+$mandrill = MailTo::Mandrill();
+$mandrill->addRecipient($email, $name)
+         ->setFrom($email, $name)
+         ->setHtml($html)
+         ->setText($text)
+         ->setSubject($subject)
+         ->sendBatch($timestamp);
 ```
 
 ####Passing the credentials dynamically for Mandrill

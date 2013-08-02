@@ -26,7 +26,7 @@ class Mandrill implements ProviderInterface
 	public function __construct($credentials = array())
 	{
 		if (count($credentials) > 0) {
-			$api_key                  = $credentials['apikey'];
+			$api_key                   = $credentials['apikey'];
 			$this->_send_object['key'] = $api_key;
 		} else {
 			$api_key = Config::get("mailto::providers.mandrill.apikey");
@@ -35,6 +35,7 @@ class Mandrill implements ProviderInterface
 			else
 				$this->_send_object['key'] = $api_key;
 		}
+
 		return $this;
 	}
 
@@ -338,8 +339,7 @@ class Mandrill implements ProviderInterface
 	 */
 	public function setBccAddress($value = "")
 	{
-		if (!empty($value))
-			$this->_message_object['bcc_address'] = $value;
+		$this->_message_object['bcc_address'] = $value;
 
 		return $this;
 	}
@@ -353,8 +353,7 @@ class Mandrill implements ProviderInterface
 	 */
 	public function setTrackingDomain($value = "")
 	{
-		if (!empty($value))
-			$this->_message_object['tracking_domain'] = $value;
+		$this->_message_object['tracking_domain'] = $value;
 
 		return $this;
 	}
@@ -368,8 +367,7 @@ class Mandrill implements ProviderInterface
 	 */
 	public function setSigningDomain($value = "")
 	{
-		if (!empty($value))
-			$this->_message_object['signing_domain'] = $value;
+		$this->_message_object['signing_domain'] = $value;
 
 		return $this;
 	}
@@ -393,27 +391,21 @@ class Mandrill implements ProviderInterface
 	 * Send a new transactional message through Mandrill
 	 * If multiple recipients have been added, they will be show on the `To` field of the Email
 	 *
-	 * @return string
-	 */
-	public function send()
-	{
-		return $this->execute();
-	}
-
-	/**
-	 * Marks a message to be sent later. If you specify a time in the past, the message will be sent immediately.
+	 * If parameter timestamp is specified, then it marks a message to be sent later. If you specify a time in the past, the message will be sent immediately.
 	 * An additional fee applies on Mandrill for scheduled email, and this feature is only available to accounts with a positive balance.
 	 *
 	 * @param $timestamp
 	 *
 	 * @return string
 	 */
-	public function sendLater($timestamp)
+	public function send($timestamp = null)
 	{
-		$this->_message_object['send_at'] = $timestamp;
+		$this->_send_object['async']   = false;
+		$this->_send_object['send_at'] = $timestamp == null ? "" : $timestamp;
 
 		return $this->execute();
 	}
+
 
 	/**
 	 * Enables background sending mode that is optimized for bulk sending.
@@ -434,12 +426,18 @@ class Mandrill implements ProviderInterface
 	/**
 	 * Sends the email as a batch to Multiple Recipients.
 	 *
+	 * If parameter timestamp is specified, then it marks a message to be sent later. If you specify a time in the past, the message will be sent immediately.
+	 * An additional fee applies on Mandrill for scheduled email, and this feature is only available to accounts with a positive balance.
+	 *
+	 * @param $timestamp
+	 *
 	 * @return string
 	 */
-	public function batchSend()
+	public function sendBatch($timestamp = null)
 	{
 		$this->_message_object['preserve_recipients'] = false;
 		$this->_message_object['async']               = true;
+		$this->_send_object['send_at']                = $timestamp == null ? "" : $timestamp;
 
 		return $this->execute();
 	}
@@ -451,13 +449,19 @@ class Mandrill implements ProviderInterface
 	 */
 	private function execute()
 	{
-		$client                                     = new Client($this->_api_url);
-		$this->_message_object['to']                = $this->_recipients;
-		$this->_message_object['global_merge_vars'] = $this->_global_merge_vars;
-		$this->_message_object['merge_vars']        = $this->_merge_vars;
-		$this->_send_object['message']              = $this->_message_object;
-		$client->setUserAgent('PayToLibrary/0.1');
-		$request = $client->post($this->_api_send_url, null, json_encode($this->_send_object));
+		$client                                      = new Client($this->_api_url);
+		$this->_message_object['to']                 = $this->_recipients;
+		$this->_message_object['global_merge_vars']  = $this->_global_merge_vars;
+		$this->_message_object['merge_vars']         = $this->_merge_vars;
+		$this->_message_object['attachments']        = $this->_attachments;
+		$this->_message_object['images']             = $this->_images;
+		$this->_message_object["metadata"]           = $this->_global_metadata;
+		$this->_message_object['recipient_metadata'] = $this->_metadata;
+
+		$this->_message_object['tags'] = $this->_tags;
+		$this->_send_object['message'] = $this->_message_object;
+		$request                       = $client->post($this->_api_send_url, null, json_encode($this->_send_object));
+
 		return $request->send()->json();
 	}
 }
