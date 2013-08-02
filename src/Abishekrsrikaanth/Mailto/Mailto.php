@@ -5,8 +5,8 @@ use Abishekrsrikaanth\Mailto\Providers\Mandrill\Mandrill;
 
 class Mailto
 {
-	public function Mandrill()
+	public function Mandrill($credentials = array())
 	{
-		return new Mandrill();
+		return new Mandrill($credentials);
 	}
 }

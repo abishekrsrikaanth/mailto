@@ -23,13 +23,18 @@ class Mandrill implements ProviderInterface
 	/**
 	 * Constructor will initialize the API Key
 	 */
-	public function __construct()
+	public function __construct($credentials = array())
 	{
-		$api_key = Config::get("mailto::providers.mandrill.apikey");
-		if (empty($api_key))
-			throw new \Exception('The Mandrill API Key is missing');
-		else
+		if (count($credentials) > 0) {
+			$api_key                  = $credentials['apikey'];
 			$this->send_object['key'] = $api_key;
+		} else {
+			$api_key = Config::get("mailto::providers.mandrill.apikey");
+			if (empty($api_key))
+				throw new \Exception('The Mandrill API Key is missing');
+			else
+				$this->send_object['key'] = $api_key;
+		}
 	}
 
 	/**
