@@ -7,6 +7,7 @@
   - [Sending Email to a Batch of recipients](#send-mandrill-batch)
   - [Sending Email to a Batch of recipients at a given time](#send-mandrill-batch-time)
   - [Passing the credentials dynamically for Mandrill](#credentials-mandrill)
+  - [Managing Webhooks](#mandrill-webhooks)
   - [Methods](#methods-mandrill)
 - [PostmarkApp](http://www.postmarkapp.com)
   - [Sending Email using PostMark](#send-postmark)
@@ -42,7 +43,7 @@ and the Facade info on app/config/app.php
 	'MailTo'      => 'Abishekrsrikaanth\Mailto\Facades\Mailto',
 ),
 ```
-Publish Configuration
+Publish the Configuration and setup the config with the credentials of the different email providers
 ```
 php artisan config:publish abishekrsrikaanth/mailto
 ```
@@ -141,6 +142,84 @@ $mandrill->addRecipient($email, $name)
 }
 ```
 
+#####Managing Webhooks<a name="mandrill-webhooks"></a>
+The configuration of this package allows you to configure the webhooks that have been created on the mandrill control panel.
+When enabled and configured, the necessary routes for the web hooks are automatically created and is ready to implement.
+The details of enabling and configuring the web hooks are mentioned below.
+
+```
+'mandrill' => array(
+		'apikey'    => 'MANDRILL_API_TOKEN',
+		'web_hooks' => array(
+			'enabled' => false,
+			'routes'  => array(
+				array(
+					'route_url'   => '/mandrill/send',
+					'route_types' => array('send'),
+					'webhook_key' => 'API_WEBHOOK_KEY',
+					'listener'    => array(
+						'type' => 'event',
+						'name' => ''
+					),
+					'verify_hook' => false
+				),
+				array(
+					'route_url'   => '/mandrill/bounce',
+					'route_types' => array(''),
+					'webhook_key' => '',
+					'listener'    => array(
+						'type' => 'queue',
+						'name' => ''
+					),
+					'verify_hook' => false
+				)
+			)
+		)
+	)
+```
+
+<dl>
+  <dt>web_hooks.enabled</dt>
+  <dd>Indicates whether to enable or disable the configuration of web hooks</dd>
+
+  <dt>web_hooks.routes</dt>
+  <dd>An array of route configurations that you wish to define for various event types of mandrill</dd>
+</dl>
+
+Lets look at detail the route configurations.
+
+<dl>
+  <dt>routes.route_url</dt>
+  <dd>The route URL of the webhook. On the example above it is configured as <strong>/mandrill/send</strong>, the route will be configured to <strong>http://base_url/mandrill/send</strong></dd>
+
+  <dt>routes.route_types</dt>
+  <dd>An array object that contains the list of events that have been configured for this web hook. 
+  You would have done this when setting up the web hook on the Mandrill Control Panel. 
+  The different event types are listed on http://help.mandrill.com/entries/21738186-Introduction-to-Webhooks. 
+  This configuration will only be used if verify_hook is set to true</dd>
+  
+  <dt>routes.webhook_key</dt>
+  <dd>A key that is automatically generated when a webhook is created. 
+  This can be found on the Webhook Control panel of mandrill. Every Webhook has a different key generated.
+  Again, this configuration will only be used if verify_hook is set to true</dd>
+  
+  <dt>routes.listener</dt>
+  <dd>The listener is used to configure a hook on the application to listen to when the webhook is called. 
+  There are 2 listeners that you can configure. <strong>Event</strong>, <strong>Queue</strong>.
+  The <strong>type</strong> takes the type of listener that you want to configure it to [event, queue].
+  The <strong>name</strong> takes the name of the listener that should be called. 
+  A look at the Laravel docs on how to setup an Event Listener or Queue will help understand.
+  </dd>
+  
+  <dt>routes.verify_hook</dt>
+  <dd>It takes a boolean value and notifies the route to verify the web hook call. 
+  There are 2 verfications that are done here <br/>
+  a. Mandrill sends an encrypted signature based on the data and the key of the webhook that can be used to verify if the web hook call is actually coming from Mandrill.
+  <br/>
+  b. It checks if the event type matches the web_hook call. <br/><br/>
+  Setting the configuration to <strong>true</strong> will automatically start validating the web hook calls if the calls are from Mandrill or not.
+  No additional coding required</dd>
+</dl>
 #####Methods<a name="methods-mandrill"></a>
 <table>
   <tr>
