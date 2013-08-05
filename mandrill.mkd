@@ -1,3 +1,4 @@
 ---
 title: Mandrill Documentation
+tags: mandrill
 ---
