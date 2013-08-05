@@ -1,9 +1,10 @@
 <?php
 
-$route_config_items = Config::get('mailto::providers.mandrill.routes');
-
-if (count($route_config_items) > 0) {
-	try {
+//Getting the Config Routes
+$check_webhooks_enabled = Config::get('mailto::providers.mandril.webhooks.enabled');
+if ($check_webhooks_enabled == true) {
+	$route_config_items = Config::get('mailto::providers.mandrill.webhooks.routes');
+	if (count($route_config_items) > 0) {
 		foreach ($route_config_items as $route_item) {
 			if (count($route_item) == 5) {
 				Route::any($route_item['route_url'], function () use ($route_item) {
@@ -21,6 +22,12 @@ if (count($route_config_items) > 0) {
 						$signed_key = base64_encode(hash_hmac('sha1', $signed_url, $webhook_key, true));
 						if ($mandrill_signature != $signed_key)
 							return 'Invalid Signature';
+						else {
+							$mandrill_input_obj = json_decode($mandrill_input, true);
+							$mandrill_event     = $mandrill_input_obj['event'];
+							if (!(in_array($mandrill_event, $route_item['route_types'])))
+								return 'Invalid Route Type';
+						}
 					}
 					if (array_key_exists('listener', $route_item)) {
 						$listener = $route_item['listener'];
@@ -33,40 +40,5 @@ if (count($route_config_items) > 0) {
 				});
 			}
 		}
-	} catch (Exception $ex) {
-		echo print_r($ex, true);
 	}
 }
-//Route::get('/web-hooks/mandrill/send', function () {
-//	$mandrill_input = Input::get('mandrill_events');
-//	Event::fire('mandrill-send', array('data' => json_decode($mandrill_input, true)));
-//
-//});
-//
-//Route::post('/web-hooks/mandrill/hard_bounce', function () {
-//
-//});
-//
-//Route::post('/web-hooks/mandrill/soft_bounce', function () {
-//
-//});
-//
-//Route::post('/web-hooks/mandrill/open', function () {
-//
-//});
-//
-//Route::post('/web-hooks/mandrill/click', function () {
-//
-//});
-//
-//Route::post('/web-hooks/mandrill/spam', function () {
-//
-//});
-//
-//Route::post('/web-hooks/mandrill/unsub', function () {
-//
-//});
-//
-//Route::post('/web-hooks/mandrill/reject', function () {
-//
-//});
