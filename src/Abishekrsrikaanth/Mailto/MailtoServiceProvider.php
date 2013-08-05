@@ -20,6 +20,8 @@ class MailtoServiceProvider extends ServiceProvider
 	public function boot()
 	{
 		$this->package('abishekrsrikaanth/mailto');
+
+		include __DIR__ . '/routes.php';
 	}
 
 	/**
