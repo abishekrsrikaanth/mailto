@@ -6,7 +6,7 @@ if (count($route_config_items) > 0) {
 	try {
 		foreach ($route_config_items as $route_item) {
 			if (count($route_item) == 5) {
-				Route::get($route_item['route_url'], function () use ($route_item) {
+				Route::any($route_item['route_url'], function () use ($route_item) {
 					$mandrill_input = Input::get('mandrill_events');
 					if ($route_item['verify_hook'] == true) {
 						$mandrill_signature = Request::header('X-Mandrill-Signature');
@@ -21,9 +21,6 @@ if (count($route_config_items) > 0) {
 						$signed_key = base64_encode(hash_hmac('sha1', $signed_url, $webhook_key, true));
 						if ($mandrill_signature != $signed_key)
 							return 'Invalid Signature';
-						else {
-
-						}
 					}
 					if (array_key_exists('listener', $route_item)) {
 						$listener = $route_item['listener'];
