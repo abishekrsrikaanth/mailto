@@ -1,9 +1,9 @@
 <?php
 
 //Getting the Config Routes
-$check_webhooks_enabled = Config::get('mailto::providers.mandril.webhooks.enabled');
+$check_webhooks_enabled = Config::get('mailto::providers.mandrill.web_hooks.enabled');
 if ($check_webhooks_enabled == true) {
-	$route_config_items = Config::get('mailto::providers.mandrill.webhooks.routes');
+	$route_config_items = Config::get('mailto::providers.mandrill.web_hooks.routes');
 	if (count($route_config_items) > 0) {
 		foreach ($route_config_items as $route_item) {
 			if (count($route_item) == 5) {
