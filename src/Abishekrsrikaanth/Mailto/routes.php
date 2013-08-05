@@ -25,8 +25,8 @@ if ($check_webhooks_enabled == true) {
 						else {
 							$mandrill_input_obj = json_decode($mandrill_input, true);
 							$mandrill_event     = $mandrill_input_obj['event'];
-							if (!(in_array($mandrill_event, $route_item['route_types'])))
-								return 'Invalid Route Type';
+							if (!(in_array($mandrill_event, $route_item['event_types'])))
+								return 'Invalid Event Type';
 						}
 					}
 					if (array_key_exists('listener', $route_item)) {
