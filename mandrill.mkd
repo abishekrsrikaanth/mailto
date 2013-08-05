@@ -1,4 +1,4 @@
 ---
-title: Mandrill Documentation
-tags: mandrill
+title:Mandrill Documentation
+layout:default
 ---
