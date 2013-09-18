@@ -769,3 +769,4 @@ $postMark->send($message);
 - Alpha Mail
 
 [![endorse](https://api.coderwall.com/abishekrsrikaanth/endorsecount.png)](https://coderwall.com/abishekrsrikaanth)
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/abishekrsrikaanth/mailto/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
