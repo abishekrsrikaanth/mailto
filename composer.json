@@ -2,7 +2,7 @@
     "name": "abishekrsrikaanth/mailto",
     "description": "Laravel 4 Package to integrate with multiple Cloud Email Providers",
     "license": "BSD-3-Clause",
-    "keywords": ["email","laravel","laravel-4","mandrill"],
+    "keywords": ["email", "laravel", "laravel-4", "mandrill"],
     "homepage": "https://github.com/abishekrsrikaanth/mailto/",
     "authors": [
         {
@@ -12,13 +12,14 @@
     ],
     "require": {
         "php": ">=5.3.0",
-        "illuminate/support": "4.0.x",
-        "guzzle/guzzle": "3.7.*@dev"
+        "illuminate/support": "4.x",
+        "guzzle/guzzle": "3.7.*@dev",
+        "swiftmailer/swiftmailer": "5.1.*@dev"
     },
     "autoload": {
         "psr-0": {
             "Abishekrsrikaanth\\Mailto": "src/"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "stable"
 }
