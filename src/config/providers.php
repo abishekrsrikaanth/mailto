@@ -72,7 +72,7 @@ return array(
 					| This configuration will only be used if verify_hook is set to true
 					|
 				    */
-					'event_types' => array('send','hard_bounce'),
+					'event_types' => array('send', 'hard_bounce'),
 					/*
 					|--------------------------------------------------------------------------
 				    | Web Hook API Key
@@ -125,5 +125,8 @@ return array(
 	),
 	'postmark' => array(
 		'apikey' => 'POSTMARK_API_TEST'
+	),
+	'mailgun'  => array(
+		'apikey' => ''
 	)
 );
